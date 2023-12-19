@@ -1,4 +1,4 @@
-package com.kh;
+package com.kh.day1;
 
 public class Final {
     public static void main(String[] args) {

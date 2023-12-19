@@ -1,4 +1,4 @@
-package com.kh;
+package com.kh.day1;
 
 // 한줄 주석
 /*

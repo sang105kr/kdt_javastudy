@@ -1,4 +1,4 @@
-package com.kh;
+package com.kh.day1;
 
 
 // 표현식 : 값, 식, 메소드

@@ -1,4 +1,4 @@
-package com.kh;
+package com.kh.day1;
 
 // 지역 변수의 생명주기 : 변수가 선언된 블럭내에서만 유효하다
 public class Variable2 {

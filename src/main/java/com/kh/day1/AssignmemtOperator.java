@@ -1,4 +1,4 @@
-package com.kh;
+package com.kh.day1;
 
 //대입연산자 : = , += , -=, *= , /= ,%=
 public class AssignmemtOperator {

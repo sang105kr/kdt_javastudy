@@ -1,4 +1,4 @@
-package com.kh;
+package com.kh.day1;
 
 //비교연산자 :  ==(같다), !=(같지않다), >(크다), <(작다), >=(이상) , <=(이하)
 public class Test5 {

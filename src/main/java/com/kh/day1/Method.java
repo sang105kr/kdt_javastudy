@@ -1,4 +1,4 @@
-package com.kh;
+package com.kh.day1;
 
 //실행 클래스 : main메소드가 있는 클래스
 //라이브러리 클래스 : main메소드가 없는 클래스
