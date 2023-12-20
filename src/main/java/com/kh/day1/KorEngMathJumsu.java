@@ -23,7 +23,7 @@ public class KorEngMathJumsu {
         int sum = kor + eng + math;
 
         //3) 평균 계산하기
-        int avg = sum / 3;
+        double avg = (double)sum / 3;
 
         //4) 총점,평균 출력하기
         System.out.println("총점=" + sum);
