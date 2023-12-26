@@ -50,15 +50,15 @@ public class Question1 {
             System.out.print("메뉴 >> ");
             int menu = scanner.nextInt();
 
-            boolean stop_depositAount = false;
+            boolean stop_depositAmount = false, stop_widthrawAmount = false;
             switch (menu) {
                 case 1: // 입금
-                    while (!stop_depositAount) {
+                    while (!stop_depositAmount) {
                         System.out.print("입금액[0-상위메뉴이동]: ");
                         int depositAmout = scanner.nextInt();
                         //상위 메뉴 이동
                         if( depositAmout == 0) {
-                            stop_depositAount = true;
+                            stop_depositAmount = true;
                             continue;
                         }
                         //체크
@@ -81,11 +81,42 @@ public class Question1 {
                         //입금처리
                         balance += depositAmout;
                         System.out.println( depositAmout + " 원이 입금되었습니다. 잔액 : " + balance);
-                        stop_depositAount = true;
+                        stop_depositAmount = true;
                     }
                     break;
 
                 case 2: // 출금
+                    while (!stop_widthrawAmount) {
+                        System.out.print("출금액[0]-상위메뉴로이동: ");
+                        int widthrawAmount = scanner.nextInt();
+
+                        //상위 메뉴 이동
+                        if( widthrawAmount == 0) {
+                            stop_widthrawAmount = true;
+                            continue;
+                        }
+
+                        //체크
+                        //1) 음수체크
+                        if( widthrawAmount < 0 ){
+                            System.out.println("양수로 입금바랍니다.");
+                            continue;
+                        }
+                        //2) 잔액체크 : 출금액이 더 많으면 출금 불가.
+                        if (widthrawAmount > balance) {
+                            System.out.println("잔액이 부족합니다. 잔액 : " + balance);
+                            continue;
+                        }
+                        //3) 1000원 미만 단위로 입출금 불가
+                        if (widthrawAmount % 1000 != 0) {
+                            System.out.println("1000원 단위로 출금 가능합니다");
+                            continue;
+                        }
+
+                        // 출금 처리
+                        balance -= widthrawAmount;
+                        stop_widthrawAmount = true;
+                    }
                     break;
 
                 case 3: // 잔액
