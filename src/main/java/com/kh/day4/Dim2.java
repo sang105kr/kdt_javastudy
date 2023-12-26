@@ -2,7 +2,7 @@ package com.kh.day4;
 
 public class Dim2 {
     public static void main(String[] args) {
-        int[][] arr = new int[4][3];
+        int[][] arr = new int[3][2];
 
 //        System.out.println(arr);
 //        System.out.println(arr.length); //2 -> 1차원배열 길이(크기)
