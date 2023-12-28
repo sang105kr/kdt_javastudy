@@ -2,11 +2,14 @@ package com.kh.day7.game;
 import java.lang.*;
 import java.util.Random;
 import java.util.Scanner;
-
+/*
+    제어자(modifier) : 접근제한자, static
+    접근제한자(access modifier) : public, protected, default, private
+ */
 public class HangMan extends Object {
-    String[] words;
-    char[] guesstedWord;
-    int attempts;
+    String[] words;         // 단어장
+    char[] guesstedWord;    // 힌트
+    int attempts;           // 시도 횟수
 
     HangMan(String[] words){
         super(); //부모클래스의 기본생성자호출
