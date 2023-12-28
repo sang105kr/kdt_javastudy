@@ -1,43 +1,23 @@
-package com.kh.day7;
-
+package com.kh.day7.game;
+import java.lang.*;
 import java.util.Random;
 import java.util.Scanner;
 
-/*
-    단어 맞추기 게임
-    단어는 'program'로 설정되어있다.
-    사용자는 남은 시도 횟수 안에 정답 단어를 맟주면 게임에서 이기게되고 그렇지않으면 진다.
-    단어를 맞출수 있는 회수는 단어의 문자수 + 3
-    ex) program
+public class HangMan extends Object {
+    String[] words;
+    char[] guesstedWord;
+    int attempts;
 
-    현재 단어 : _______
-    남은 시도 회수 : 10
-    글자를 입력하세요 : p
-    현재 단어 : p______
-    남은 시도 회수 : 9
-    글자를 입력하세요 : z
-    현재 단어 : p______
-    남은 시도 회수 : 8
-    글자를 입력하세요 : r
-    현재 단어 : pr__r__
-    남은 시도 회수 : 7
-    글자를 입력하세요 :
-    ....
-    현재 단어 : progra_
-    남은 시도 회수 : 1
-    글자를 입력하세요 : m
-    축하합니다! 단어를 맞췄습니다. : program
- */
-public class Question1_3 {
-    public static void main(String[] args) {
-        String[] words = {
-                "program", "freedom", "believe", "thought", "company",
-                "love", "student", "teacher", "chair", "culture"
-        };
+    HangMan(String[] words){
+        super(); //부모클래스의 기본생성자호출
+        this.words = words;
+    }
 
+    void run(){
         Random random = new Random();
         int idx = random.nextInt(words.length); //0~9
         String word = words[idx];
+        attempts = word.length() + 3;   // 시도횟수 = 문자열 길이 + 3
 
         char[] guesstedWord = makeUnderLine(word.length());
         int attempts = word.length() + 3;   // 시도횟수 = 문자열 길이 + 3
@@ -47,7 +27,7 @@ public class Question1_3 {
         while (attempts > 0) {
             System.out.println("현재단어 : " + String.valueOf(guesstedWord));
             System.out.println("남은 시도 회수 :" + attempts);
-            
+
             String str = "";
             while (true) {
                 System.out.print("글자를 입력하세요[1글자(a~z)] : ");
@@ -61,7 +41,7 @@ public class Question1_3 {
 
             }
             char ch = str.charAt(0);
-            
+
             for (int i = 0; i < word.length(); i++) {
                 if (word.charAt(i) == ch) {
                     guesstedWord[i] = ch;
@@ -80,7 +60,7 @@ public class Question1_3 {
 
     }
 
-    public static char[] makeUnderLine(int len) {
+    private char[] makeUnderLine(int len) {
         char[] underLine = new char[len];
         for (int i = 0; i < len; i++) {
             underLine[i] = '_';
