@@ -25,7 +25,7 @@ public class Student {
                 break;
         }
     }
-
+    
     public int getScore(int num) {
         int score = -1; // 번호에 해당되는 점수가 없을때 -1반환
         switch (num) {
