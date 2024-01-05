@@ -19,7 +19,7 @@ public class Pig {
         currentPlayer = computer;
         boolean stop = false;
         while (!stop) {
-            turnTurn();
+            takeTurn();
 
             if (currentPlayer.getTotal() >= goal) {
                 stop = true;
@@ -36,7 +36,7 @@ public class Pig {
     }
 
     //	takeTurn: 한 선수의 순서에 대한 게임을 한다
-    public void turnTurn() {
+    public void takeTurn() {
         if(currentPlayer == computer){
             System.out.println("=============");
             System.out.println("computer 차례!");

@@ -17,7 +17,7 @@ public class Player {
 
         Scanner scanner = new Scanner(System.in);
         boolean stop = false;
-        int cnt = 0;
+        int cnt = 0;  // 주사위 굴리는 횟수 카운트
         while (!stop) {
             cnt++;
             // 주사위 2개 굴리기
