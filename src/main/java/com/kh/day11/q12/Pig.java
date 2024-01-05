@@ -32,18 +32,22 @@ public class Pig {
                 }
             }
         }
+        announceWinner();
     }
 
     //	takeTurn: 한 선수의 순서에 대한 게임을 한다
     public void turnTurn() {
         if(currentPlayer == computer){
+            System.out.println("=============");
             System.out.println("computer 차례!");
         }else{
+            System.out.println("=============");
             System.out.println("human 차례!");
         }
-        System.out.println("현재 점수");
-        System.out.println("compter : " + computer.getTotal());
-        System.out.println("human : " + human.getTotal());
+        System.out.print("현재 점수");
+        System.out.print("\t compter : " + computer.getTotal());
+        System.out.print("\t thuman : " + human.getTotal());
+        System.out.println();
         currentPlayer.roll(dice, goal);
     }
     //	announceWinner: 승자를 발표하고 결과를 출력한다
