@@ -19,4 +19,20 @@ public class Book {
                 ", bookPrice=" + bookPrice +
                 '}';
     }
+
+    public String getBookName() {
+        return bookName;
+    }
+
+    public String getBookAuthor() {
+        return bookAuthor;
+    }
+
+    public int getBookPrice() {
+        return bookPrice;
+    }
+
+    public void setBookPrice(int bookPrice) {
+        this.bookPrice = bookPrice;
+    }
 }
