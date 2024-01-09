@@ -65,6 +65,7 @@ public class BookCatalogue {
                 System.out.print("도서명 : " + ele.getBookName());
                 System.out.print("\t저자 : " + ele.getBookAuthor());
                 System.out.print("\t가격 : " + ele.getBookPrice());
+                System.out.println();
             }
         }        
     }
@@ -84,11 +85,11 @@ public class BookCatalogue {
     }
 
     
-    // null인 아닌 인텍스 찾기
+    // null인 인텍스 찾기
     private int findNullIdx() {
         int idx = -1;
         for (int i = 0; i < catalogue.length; i++) {
-            if(catalogue[i] != null){
+            if(catalogue[i] == null){
                 idx = i;
                 break;
             }
@@ -100,9 +101,11 @@ public class BookCatalogue {
     private int searchBookIdx(String bookName){
         int idx = -1;
         for (int i = 0; i < catalogue.length; i++) {
-            if(catalogue[i].getBookName().equals(bookName)){
-                idx = i;
-                break;
+            if(catalogue[i] !=null){
+                if(catalogue[i].getBookName().equals(bookName)) {
+                    idx = i;
+                    break;
+                }
             }
         }
         return idx;

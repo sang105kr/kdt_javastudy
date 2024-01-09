@@ -35,6 +35,7 @@ public class CatalogueDriver {
             System.out.println("메뉴: 1.추가 2.제거 3.수정(가격) 4.조회(단권) 5.조회(전체) 6.종료");
             System.out.print("선택 >> ");
             int menu = scanner.nextInt();
+            scanner.nextLine();
 
             switch (menu) {
                 case 1: //추가
