@@ -84,7 +84,7 @@ public class BookCatalogue {
         return catalogue;
     }
 
-    
+
     // null인 인텍스 찾기
     private int findNullIdx() {
         int idx = -1;
