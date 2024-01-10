@@ -86,4 +86,5 @@ public class Account {
                 "\t 예금주명 : " + accountName +
                 "\t 잔액 : " + balance + "\n";
     }
+
 }

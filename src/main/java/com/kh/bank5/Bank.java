@@ -12,7 +12,6 @@ public class Bank {
         accounts = new Account[cnt];
     }
 
-
     public void serviceStart(){
         Scanner scanner = new Scanner(System.in);
         boolean stop = false;

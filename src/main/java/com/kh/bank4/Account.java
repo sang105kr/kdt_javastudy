@@ -1,7 +1,6 @@
 package com.kh.bank4;
 
 public class Account {
-
     //예금주이름, 잔고, 계좌번호
     private String accountName;        //예금주이름
     private int balance;               //잔액
