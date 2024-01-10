@@ -26,8 +26,6 @@ public class Account {
         return str;
     }
 
-
-
     //입금
     public void deposit(int money) {
         //1회 입금한도는 4만원을 초과할 수 없다.
@@ -65,37 +63,6 @@ public class Account {
         balance -= money;
         System.out.println(this);
     }
-
-//    //조회(개별)
-//    public void getAccount(String accountNumber) {
-//        //계좌번호로 계좌 찾아오기
-//        Account account = findAccount(accountNumber);
-//        //계좌를 못찾은 경우
-//        if(account == null) return;
-//
-//        System.out.print("계좌번호 : " + account.accountNumber);
-//        System.out.print("\t예금주명 : " + account.accountName);
-//        System.out.print("\t잔액 : " + account.balance);
-//        System.out.println();
-//    }
-//
-//    //조회(전체)
-//    public void listAccount() {
-//        int usingAccount = 0;   //사용중인계좌
-//        for (Account account : accounts) {
-//            if(account == null) continue;
-//            usingAccount++;
-//            System.out.print("계좌번호 : " + account.accountNumber);
-//            System.out.print("\t예금주명 : " + account.accountName);
-//            System.out.print("\t잔액 : " + account.balance);
-//            System.out.println();
-//            System.out.print("사용중인계좌수 : " + usingAccount);
-//            System.out.print("\t잔여계좌수 : " + (ACCOUNTS_MAX_SIZE - usingAccount));
-//            System.out.println();
-//        }
-//    }
-//
-
 
     public String getAccountName() {
         return accountName;

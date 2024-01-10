@@ -37,22 +37,22 @@ public class AccountMain {
                     accountNumber = scanner.nextLine();
                     System.out.print("입금액 : ");
                     money = scanner.nextInt();
-                    account.deposit(accountNumber,money);
+                    account.deposit(money);
                     break;
                 case 4: //출금
                     System.out.print("계좌번호 : ");
                     accountNumber = scanner.nextLine();
                     System.out.print("출금액 : ");
                     money = scanner.nextInt();
-                    account.widthdraw(accountNumber,money);
+                    account.widthdraw(money);
                     break;
                 case 5: // 개별조회
                     System.out.print("계좌번호 : ");
                     accountNumber = scanner.nextLine();
-                    account.getAccount(accountNumber);
+                    getAccount(accountNumber);
                     break;
                 case 6: //전체 조회
-                    account.listAccount();
+                    listAccount();
                     break;
                 case 7: //종료
                     stop = true;
@@ -108,4 +108,34 @@ public class AccountMain {
         System.out.println("찾고자하는 계좌가 없습니다.");
         return account;
     }
+
+    //조회(개별)
+    public static void getAccount(String accountNumber) {
+        //계좌번호로 계좌 찾아오기
+        Account account = findAccount(accountNumber);
+        //계좌를 못찾은 경우
+        if(account == null) return;
+
+        System.out.print("계좌번호 : " + account.getAccountNumber());
+        System.out.print("\t예금주명 : " + account.getAccountName());
+        System.out.print("\t잔액 : " + account.getBalance());
+        System.out.println();
+    }
+
+    //조회(전체)
+    public static void listAccount() {
+        int usingAccount = 0;   //사용중인계좌
+        for (Account account : accounts) {
+            if(account == null) continue;
+            usingAccount++;
+            System.out.print("계좌번호 : " + account.getAccountNumber());
+            System.out.print("\t예금주명 : " + account.getAccountName());
+            System.out.print("\t잔액 : " + account.getBalance());
+            System.out.println();
+            System.out.print("사용중인계좌수 : " + usingAccount);
+            System.out.print("\t잔여계좌수 : " + (ACCOUNTS_MAX_SIZE - usingAccount));
+            System.out.println();
+        }
+    }
+
 }
