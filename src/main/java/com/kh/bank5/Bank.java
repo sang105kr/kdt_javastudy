@@ -1,7 +1,5 @@
 package com.kh.bank5;
 
-import com.kh.bank4.Account;
-
 import java.util.Scanner;
 
 public class Bank {

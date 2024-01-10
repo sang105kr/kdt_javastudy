@@ -1,20 +1,17 @@
 package com.kh.bank4;
 
-import com.kh.bank5.Account;
-import com.kh.bank5.Bank;
-
 import java.util.Scanner;
 
 public class AccountMain {
     //계좌관리
     static final int ACCOUNTS_MAX_SIZE = 5;
-    static com.kh.bank5.Account[] accounts = new com.kh.bank5.Account[ACCOUNTS_MAX_SIZE];
+    static Account[] accounts = new Account[ACCOUNTS_MAX_SIZE];
 
     public static void main(String[] args) {
 
         Scanner scanner = new Scanner(System.in);
         boolean stop = false;
-        com.kh.bank5.Account account = null;         //계좌
+        Account account = null;         //계좌
         String accountName = null;      //예금주명
         String accountNumber = null;    //계좌번호
         int money = 0;                  //입출금액
@@ -27,7 +24,7 @@ public class AccountMain {
                 case 1: //신규
                     System.out.print("예금주명 : ");
                     accountName = scanner.nextLine();
-                    account = new com.kh.bank5.Account(accountName);
+                    account = new Account(accountName);
                     addAccount(account);
                     break;
                 case 2: //폐지
@@ -67,7 +64,7 @@ public class AccountMain {
     }
 
     //계좌 추가
-    private static void addAccount(com.kh.bank5.Account account) {
+    private static void addAccount(Account account) {
         for (int i = 0; i < accounts.length; i++) {
             if (accounts[i] == null) {
                 accounts[i] = account;
@@ -82,7 +79,7 @@ public class AccountMain {
     //폐지
     private static void closingAccount(String accountNumber){
         //계좌번호로 계좌 찾아오기
-        com.kh.bank5.Account account = findAccount(accountNumber);
+        Account account = findAccount(accountNumber);
         //계좌를 못찾은 경우
         if(account == null) return;
 
@@ -97,8 +94,8 @@ public class AccountMain {
     }
 
     //계좌 검색
-    private static com.kh.bank5.Account findAccount(String accountNumber) {
-        com.kh.bank5.Account account = null;
+    private static Account findAccount(String accountNumber) {
+        Account account = null;
         for (int i = 0; i < accounts.length; i++) {
             if(accounts[i] != null) {
                 if (accounts[i].getAccountNumber().equals(accountNumber)) {
@@ -115,7 +112,7 @@ public class AccountMain {
     //조회(개별)
     public static void getAccount(String accountNumber) {
         //계좌번호로 계좌 찾아오기
-        com.kh.bank5.Account account = findAccount(accountNumber);
+        Account account = findAccount(accountNumber);
         //계좌를 못찾은 경우
         if(account == null) return;
 
