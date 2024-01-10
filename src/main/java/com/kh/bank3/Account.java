@@ -1,4 +1,4 @@
-package com.kh.bank2;
+package com.kh.bank3;
 
 public class Account {
     //계좌관리
@@ -47,12 +47,9 @@ public class Account {
     //폐지
     public void closingAccount(String accountNumber){
         //계좌번호로 계좌 찾아오기
-        int idx = findAccount(accountNumber);
-        if(idx == -1){
-            System.out.println("찾고자하는 계좌가 없습니다.");
-            return;
-        }
-        Account account = accounts[idx];
+        Account account = findAccount(accountNumber);
+        //계좌를 못찾은 경우
+        if(account == null) return;
 
         //잔액이 남아 있는 경우 폐지 불가능 하다.
         if (account.balance > 0) {
@@ -73,12 +70,9 @@ public class Account {
         }
 
         //계좌번호로 계좌 찾아오기
-        int idx = findAccount(accountNumber);
-        if(idx == -1){
-            System.out.println("찾고자하는 계좌가 없습니다.");
-            return;
-        }
-        Account account = accounts[idx];
+        Account account = findAccount(accountNumber);
+        //계좌를 못찾은 경우
+        if(account == null) return;
 
         //예치금액은 10만원 이하로 제한 한다.
         if(account.balance + money > 100_000){
@@ -100,12 +94,9 @@ public class Account {
         }
 
         //계좌번호로 계좌 찾아오기
-        int idx = findAccount(accountNumber);
-        if(idx == -1){
-            System.out.println("찾고자하는 계좌가 없습니다.");
-            return;
-        }
-        Account account = accounts[idx];
+        Account account = findAccount(accountNumber);
+        //계좌를 못찾은 경우
+        if(account == null) return;
 
         //마이너스 잔고는 허용하지 않는다.
         if(account.balance - money < 0){
@@ -121,12 +112,10 @@ public class Account {
     //조회(개별)
     public void getAccount(String accountNumber) {
         //계좌번호로 계좌 찾아오기
-        int idx = findAccount(accountNumber);
-        if(idx == -1){
-            System.out.println("찾고자하는 계좌가 없습니다.");
-            return;
-        }
-        Account account = accounts[idx];
+        Account account = findAccount(accountNumber);
+        //계좌를 못찾은 경우
+        if(account == null) return;
+
         System.out.print("계좌번호 : " + account.accountNumber);
         System.out.print("\t예금주명 : " + account.accountName);
         System.out.print("\t잔액 : " + account.balance);
@@ -150,18 +139,19 @@ public class Account {
     }
 
     //계좌 검색
-    private int findAccount(String accountNumber) {
-        int idx = -1;
+    private Account findAccount(String accountNumber) {
+        Account account = null;
         for (int i = 0; i < accounts.length; i++) {
             if(accounts[i] != null) {
                 if (accounts[i].accountNumber.equals(accountNumber)) {
-                    idx = i;
-                    break;
+                    account = accounts[i];
+                    return account;
                 }
             }
         }
 
-        return idx;
+        System.out.println("찾고자하는 계좌가 없습니다.");
+        return account;
     }
 
     @Override
