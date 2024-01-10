@@ -27,7 +27,14 @@ public class Bank {
                 case 1: //신규
                     System.out.print("예금주명 : ");
                     accountName = scanner.nextLine();
+                    //동명이인체크
+                    if(existSameName(accountName)){
+                        System.out.println("동명이인 계좌가 존재합니다.");
+                        continue;
+                    }
+                    //계좌생성
                     account = new Account(accountName);
+                    //계좌추가
                     addAccount(account);
                     break;
                 case 2: //폐지
@@ -68,6 +75,22 @@ public class Bank {
                     System.out.println("(1~7) 선택바랍니다.");
             }
         }
+    }
+
+    //동명이인 체크
+    private boolean existSameName(String accountName) {
+        boolean exist = false;
+
+        for (Account account : accounts) {
+            if(account != null ){
+                if(account.getAccountName().equals(accountName)){
+                    exist = true;
+                    break;
+                }
+            }
+        }
+
+        return exist;
     }
 
     //계좌 추가
