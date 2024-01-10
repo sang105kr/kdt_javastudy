@@ -61,7 +61,8 @@ public class Account {
         }
         
         //폐지 처리
-        account = null;
+        accounts[idx] = null;
+        System.out.println("계좌가 폐지처리 되었습니다.");
     }
 
     //입금

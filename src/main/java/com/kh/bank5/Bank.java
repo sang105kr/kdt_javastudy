@@ -17,6 +17,7 @@ public class Bank {
         String accountName = null;      //예금주명
         String accountNumber = null;    //계좌번호
         int money = 0;                  //입출금액
+        int idx = -1;                   //계좌 인덱스
         while (!stop) {
             System.out.println("1.신규 2.폐지 3.입금 4.출금 5.계좌조회(개별) 6.계좌조회(전체) 7.종료");
             System.out.print("선택 >> ");
@@ -39,14 +40,18 @@ public class Bank {
                     accountNumber = scanner.nextLine();
                     System.out.print("입금액 : ");
                     money = scanner.nextInt();
-                    account.deposit(money);
+                    idx = findAccountIdx(accountNumber);
+                    if(idx == -1) continue;
+                    accounts[idx].deposit(money);
                     break;
                 case 4: //출금
                     System.out.print("계좌번호 : ");
                     accountNumber = scanner.nextLine();
                     System.out.print("출금액 : ");
                     money = scanner.nextInt();
-                    account.widthdraw(money);
+                    idx = findAccountIdx(accountNumber);
+                    if(idx == -1) continue;
+                    accounts[idx].widthdraw(money);
                     break;
                 case 5: // 개별조회
                     System.out.print("계좌번호 : ");
@@ -80,23 +85,24 @@ public class Bank {
 
     //폐지
     private void closingAccount(String accountNumber){
-        //계좌번호로 계좌 찾아오기
-        Account account = findAccount(accountNumber);
+        //계좌번호로 계좌인덱스 찾아오기
+        int idx = findAccountIdx(accountNumber);
         //계좌를 못찾은 경우
-        if(account == null) return;
+        if(idx == -1) return;
 
         //잔액이 남아 있는 경우 폐지 불가능 하다.
-        if (account.getBalance() > 0) {
+        if (accounts[idx].getBalance() > 0) {
             System.out.println("잔액이 존재합니다");
             return;
         }
 
         //폐지 처리
-        account = null;
+        accounts[idx] = null;
+        System.out.println("계좌가 폐지처리 되었습니다.");
     }
 
     //계좌 검색
-    private Account findAccount(String accountNumber) {
+    private static Account findAccount(String accountNumber) {
         Account account = null;
         for (int i = 0; i < accounts.length; i++) {
             if(accounts[i] != null) {
@@ -109,6 +115,22 @@ public class Bank {
 
         System.out.println("찾고자하는 계좌가 없습니다.");
         return account;
+    }
+
+    //계좌 인덱스 검색
+    private static int findAccountIdx(String accountNumber) {
+        int idx = -1;
+        for (int i = 0; i < accounts.length; i++) {
+            if(accounts[i] != null) {
+                if (accounts[i].getAccountNumber().equals(accountNumber)) {
+                    idx = i;
+                    return idx;
+                }
+            }
+        }
+
+        System.out.println("찾고자하는 계좌가 없습니다.");
+        return idx;
     }
 
     //조회(개별)

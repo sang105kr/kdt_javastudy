@@ -46,19 +46,20 @@ public class Account {
 
     //폐지
     public void closingAccount(String accountNumber){
-        //계좌번호로 계좌 찾아오기
-        Account account = findAccount(accountNumber);
+        //계좌번호로 계좌 인덱스 찾아오기
+        int idx = findAccountIdx(accountNumber);
         //계좌를 못찾은 경우
-        if(account == null) return;
+        if(idx == -1) return;
 
         //잔액이 남아 있는 경우 폐지 불가능 하다.
-        if (account.balance > 0) {
+        if (accounts[idx].balance > 0) {
             System.out.println("잔액이 존재합니다");
             return;
         }
-        
+
         //폐지 처리
-        account = null;
+        accounts[idx] = null;
+        System.out.println("계좌가 폐지처리 되었습니다.");
     }
 
     //입금
@@ -152,6 +153,21 @@ public class Account {
 
         System.out.println("찾고자하는 계좌가 없습니다.");
         return account;
+    }
+    //계좌 인덱스 검색
+    private int findAccountIdx(String accountNumber) {
+        int idx = -1;
+        for (int i = 0; i < accounts.length; i++) {
+            if(accounts[i] != null) {
+                if (accounts[i].accountNumber.equals(accountNumber)) {
+                    idx = i;
+                    return idx;
+                }
+            }
+        }
+
+        System.out.println("찾고자하는 계좌가 없습니다.");
+        return idx;
     }
 
     @Override
